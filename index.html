@@ -80,10 +80,20 @@ button:hover {
 .play-btn:hover {
   background: #ff3388;
 }
+
+audio {
+  display: none; /* esconde player nativo */
+}
+
+@media (max-width: 600px) {
+  button {
+    width: 100%;
+  }
+}
 </style>
 </head>
 
-<body>
+<body oncontextmenu="return false"> <!-- desativa botão direito -->
 
 <h1>Meus Beats</h1>
 <p class="cta">Curtiu algum beat? chama no Instagram</p>
@@ -92,7 +102,7 @@ button:hover {
 <div id="conteudo"></div>
 
 <!-- BOTÃO INSTAGRAM FIXO -->
-<a class="ig-fixo" href="https://instagram.com/Sublime.808" target="_blank">
+<a class="ig-fixo" href="https://instagram.com/SEU_INSTAGRAM" target="_blank">
 📩 Chamar no IG
 </a>
 
@@ -129,7 +139,7 @@ function abrirMes(mes) {
         <audio id="${mes}-beat${num}">
           <source src="beats/${mes}/beat${num}.mp3" type="audio/mpeg">
         </audio>
-        <button class="play-btn" onclick="tocar('audio#${mes}-beat${num}')">▶ Ouvir</button>
+        <button class="play-btn" onclick="tocar('${mes}-beat${num}')">▶ Ouvir</button>
       </div>
     `;
   }
@@ -141,8 +151,8 @@ function voltar() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function tocar(selector) {
-  const audio = document.querySelector(selector);
+function tocar(id) {
+  const audio = document.getElementById(id);
   if (tocando && tocando !== audio) tocando.pause();
   if (audio.paused) {
     audio.play();
