@@ -42,6 +42,10 @@
       opacity: 0.85;
     }
 
+    button.voltar:hover {
+      transform: scale(1.05);
+    }
+
     .mes {
       display: none;
       margin-top: 30px;
@@ -61,7 +65,7 @@
   <h1>🎧 Meus Beats</h1>
   <div class="cta">
     Curtiu algum beat? <br>
-    Chama no Instagram <strong>@Sublime.808</strong>
+    Chama no Instagram <strong>@SEUINSTAGRAM</strong>
   </div>
 
   <div id="menu">
@@ -69,96 +73,76 @@
     <button onclick="mostrar('fevereiro')">Fevereiro</button>
   </div>
 
+  <!-- JANEIRO -->
   <div id="janeiro" class="mes">
-  <h2>Janeiro</h2>
+    <h2>Janeiro</h2>
 
-  <audio controls><source src="beats/janeiro/beat01.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat02.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat03.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat04.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat05.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat06.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat07.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat08.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat09.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat10.mp3" type="audio/mpeg"></audio>
-
-  <audio controls><source src="beats/janeiro/beat11.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat12.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat13.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat14.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat15.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat16.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat17.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat18.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat19.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat20.mp3" type="audio/mpeg"></audio>
-
-  <audio controls><source src="beats/janeiro/beat21.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat22.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat23.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat24.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat25.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat26.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat27.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat28.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat29.mp3" type="audio/mpeg"></audio>
-  <audio controls><source src="beats/janeiro/beat30.mp3" type="audio/mpeg"></audio>
-
-  <button class="voltar" onclick="voltar()">⬅ Voltar</button>
-</div>
-
-
-  <div id="fevereiro" class="mes">
-    <h2>Fevereiro</h2>
-    <audio controls>
-      <source src="beats/fevereiro/beat1.mp3" type="audio/mpeg">
+    <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture>
+      <source src="beats/janeiro/beat01.mp3" type="audio/mpeg">
+    </audio>
+    <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture>
+      <source src="beats/janeiro/beat02.mp3" type="audio/mpeg">
+    </audio>
+    <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture>
+      <source src="beats/janeiro/beat03.mp3" type="audio/mpeg">
     </audio>
 
     <button class="voltar" onclick="voltar()">⬅ Voltar</button>
   </div>
 
-<script>
-  function mostrar(mes) {
-    pararTodos();
-    document.getElementById('menu').style.display = 'none';
-    document.querySelectorAll('.mes').forEach(div => {
-      div.style.display = 'none';
-    });
-    document.getElementById(mes).style.display = 'block';
-  }
+  <!-- FEVEREIRO -->
+  <div id="fevereiro" class="mes">
+    <h2>Fevereiro</h2>
 
-  function voltar() {
-    pararTodos();
-    document.querySelectorAll('.mes').forEach(div => {
-      div.style.display = 'none';
-    });
-    document.getElementById('menu').style.display = 'block';
-  }
+    <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture>
+      <source src="beats/fevereiro/beat01.mp3" type="audio/mpeg">
+    </audio>
 
-  function pararTodos() {
+    <button class="voltar" onclick="voltar()">⬅ Voltar</button>
+  </div>
+
+  <script>
+    function mostrar(mes) {
+      pararTodos();
+      document.getElementById('menu').style.display = 'none';
+      document.querySelectorAll('.mes').forEach(div => {
+        div.style.display = 'none';
+      });
+      document.getElementById(mes).style.display = 'block';
+    }
+
+    function voltar() {
+      pararTodos();
+      document.querySelectorAll('.mes').forEach(div => {
+        div.style.display = 'none';
+      });
+      document.getElementById('menu').style.display = 'block';
+    }
+
+    function pararTodos() {
+      document.querySelectorAll('audio').forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    }
+
+    // quando um tocar, os outros param
     document.querySelectorAll('audio').forEach(audio => {
-      audio.pause();
-      audio.currentTime = 0;
-    });
-  }
-
-  // quando um tocar, os outros param
-  document.querySelectorAll('audio').forEach(audio => {
-    audio.addEventListener('play', () => {
-      document.querySelectorAll('audio').forEach(outro => {
-        if (outro !== audio) {
-          outro.pause();
-          outro.currentTime = 0;
-        }
+      audio.addEventListener('play', () => {
+        document.querySelectorAll('audio').forEach(outro => {
+          if (outro !== audio) {
+            outro.pause();
+            outro.currentTime = 0;
+          }
+        });
       });
     });
-  });
-</script>
 
+    // bloquear botão direito
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+  </script>
 
 </body>
 </html>
-
-
-
