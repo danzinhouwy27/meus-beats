@@ -14,17 +14,28 @@
     }
 
     h1 {
+      margin-bottom: 10px;
+    }
+
+    .cta {
       margin-bottom: 30px;
+      font-size: 14px;
+      opacity: 0.9;
     }
 
     button {
       background: #1db954;
       border: none;
       padding: 12px 20px;
-      margin: 10px;
+      margin: 8px;
       font-size: 16px;
       cursor: pointer;
       border-radius: 6px;
+    }
+
+    button.voltar {
+      background: #444;
+      margin-top: 20px;
     }
 
     button:hover {
@@ -48,10 +59,15 @@
 <body>
 
   <h1>🎧 Meus Beats</h1>
-  <p>Escolha um mês</p>
+  <div class="cta">
+    Curtiu algum beat? <br>
+    Chama no Instagram <strong>@Sublime.808</strong>
+  </div>
 
-  <button onclick="mostrar('janeiro')">Janeiro</button>
-  <button onclick="mostrar('fevereiro')">Fevereiro</button>
+  <div id="menu">
+    <button onclick="mostrar('janeiro')">Janeiro</button>
+    <button onclick="mostrar('fevereiro')">Fevereiro</button>
+  </div>
 
   <div id="janeiro" class="mes">
     <h2>Janeiro</h2>
@@ -61,6 +77,8 @@
     <audio controls>
       <source src="beats/janeiro/beat2.mp3" type="audio/mpeg">
     </audio>
+
+    <button class="voltar" onclick="voltar()">⬅ Voltar</button>
   </div>
 
   <div id="fevereiro" class="mes">
@@ -68,14 +86,24 @@
     <audio controls>
       <source src="beats/fevereiro/beat1.mp3" type="audio/mpeg">
     </audio>
+
+    <button class="voltar" onclick="voltar()">⬅ Voltar</button>
   </div>
 
   <script>
     function mostrar(mes) {
+      document.getElementById('menu').style.display = 'none';
       document.querySelectorAll('.mes').forEach(div => {
         div.style.display = 'none';
       });
       document.getElementById(mes).style.display = 'block';
+    }
+
+    function voltar() {
+      document.querySelectorAll('.mes').forEach(div => {
+        div.style.display = 'none';
+      });
+      document.getElementById('menu').style.display = 'block';
     }
   </script>
 
