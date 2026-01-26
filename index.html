@@ -39,7 +39,7 @@ button:hover {
   background: #7a1525;
 }
 
-/* BOTÃO VOLTAR NORMAL */
+/* BOTÃO VOLTAR */
 .voltar {
   background: #ff0055;
   margin-bottom: 20px;
@@ -61,19 +61,24 @@ button:hover {
   box-shadow: 0 0 15px rgba(221,42,123,0.7);
 }
 
+/* PLAYER CUSTOM */
 .beat {
   margin: 14px 0;
 }
 
-audio {
-  width: 100%;
-  max-width: 420px;
+.play-btn {
+  background: #ff0055;
+  border: none;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 5px;
 }
 
-@media (max-width: 600px) {
-  button {
-    width: 100%;
-  }
+.play-btn:hover {
+  background: #ff3388;
 }
 </style>
 </head>
@@ -121,9 +126,10 @@ function abrirMes(mes) {
     conteudo.innerHTML += `
       <div class="beat">
         <p>Beat ${num}</p>
-        <audio controls onplay="pararOutros(this)">
+        <audio id="${mes}-beat${num}">
           <source src="beats/${mes}/beat${num}.mp3" type="audio/mpeg">
         </audio>
+        <button class="play-btn" onclick="tocar('audio#${mes}-beat${num}')">▶ Ouvir</button>
       </div>
     `;
   }
@@ -135,11 +141,15 @@ function voltar() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function pararOutros(atual) {
-  if (tocando && tocando !== atual) {
-    tocando.pause();
+function tocar(selector) {
+  const audio = document.querySelector(selector);
+  if (tocando && tocando !== audio) tocando.pause();
+  if (audio.paused) {
+    audio.play();
+    tocando = audio;
+  } else {
+    audio.pause();
   }
-  tocando = atual;
 }
 </script>
 
