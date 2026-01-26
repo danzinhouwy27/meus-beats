@@ -2,59 +2,80 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Beats</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Meus Beats</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0e0e0e;
+      color: #fff;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    button {
+      background: #1db954;
+      border: none;
+      padding: 12px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    .mes {
+      display: none;
+      margin-top: 30px;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 400px;
+      margin: 10px auto;
+      display: block;
+    }
+  </style>
 </head>
+
 <body>
 
-  <h1>BEATS</h1>
-  <p class="sub">Preview only • DM para licença</p>
+  <h1>🎧 Meus Beats</h1>
+  <p>Escolha um mês</p>
 
-  <!-- JANEIRO -->
-  <div class="month">
-    <button class="month-btn" onclick="toggle('jan')">Janeiro</button>
+  <button onclick="mostrar('janeiro')">Janeiro</button>
+  <button onclick="mostrar('fevereiro')">Fevereiro</button>
 
-    <div class="beats" id="jan">
-      <div class="beat">
-        <p>Trap Hard</p>
-        <audio controls>
-          <source src="beats/janeiro/beat1.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-
-      <div class="beat">
-        <p>Dark Trap</p>
-        <audio controls>
-          <source src="beats/janeiro/beat2.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-    </div>
+  <div id="janeiro" class="mes">
+    <h2>Janeiro</h2>
+    <audio controls>
+      <source src="beats/janeiro/beat1.mp3" type="audio/mpeg">
+    </audio>
+    <audio controls>
+      <source src="beats/janeiro/beat2.mp3" type="audio/mpeg">
+    </audio>
   </div>
 
-  <!-- FEVEREIRO -->
-  <div class="month">
-    <button class="month-btn" onclick="toggle('fev')">Fevereiro</button>
-
-    <div class="beats" id="fev">
-      <div class="beat">
-        <p>Drill</p>
-        <audio controls>
-          <source src="beats/fevereiro/beat1.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-    </div>
+  <div id="fevereiro" class="mes">
+    <h2>Fevereiro</h2>
+    <audio controls>
+      <source src="beats/fevereiro/beat1.mp3" type="audio/mpeg">
+    </audio>
   </div>
-
-  <footer>
-    <a href="https://instagram.com/SEUINSTAGRAM" target="_blank">
-      @SEUINSTAGRAM
-    </a>
-  </footer>
 
   <script>
-    function toggle(id) {
-      const el = document.getElementById(id);
-      el.style.display = el.style.display === "block" ? "none" : "block";
+    function mostrar(mes) {
+      document.querySelectorAll('.mes').forEach(div => {
+        div.style.display = 'none';
+      });
+      document.getElementById(mes).style.display = 'block';
     }
   </script>
 
