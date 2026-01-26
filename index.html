@@ -23,8 +23,9 @@ h2 { margin-top: 20px; }
   margin-bottom: 20px;
 }
 
+/* BOTÕES DOS MESES – VERMELHO ESCURO */
 button {
-  background: #5a0f1b; /* vermelho escuro */
+  background: #5a0f1b;
   color: #fff;
   border: none;
   padding: 14px;
@@ -38,7 +39,7 @@ button:hover {
   background: #7a1525;
 }
 
-
+/* BOTÃO VOLTAR */
 .voltar {
   background: #ff0055;
   margin-bottom: 20px;
@@ -59,6 +60,22 @@ button:hover {
   display: none;
   z-index: 999;
   box-shadow: 0 0 15px rgba(255,0,85,0.6);
+}
+
+/* BOTÃO INSTAGRAM FIXO */
+.ig-fixo {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  z-index: 999;
+  box-shadow: 0 0 15px rgba(221,42,123,0.7);
 }
 
 .beat {
@@ -86,8 +103,13 @@ audio {
 <div id="menu"></div>
 <div id="conteudo"></div>
 
-<!-- BOTÃO FLUTUANTE -->
+<!-- BOTÃO VOLTAR FLUTUANTE -->
 <button id="voltarFixo" class="voltar-fixo" onclick="voltar()">⬅ Voltar</button>
+
+<!-- BOTÃO INSTAGRAM FIXO -->
+<a class="ig-fixo" href="https://instagram.com/SEU_INSTAGRAM" target="_blank">
+📩 Chamar no IG
+</a>
 
 <script>
 const meses = [
@@ -147,4 +169,3 @@ function pararOutros(atual) {
 
 </body>
 </html>
-
