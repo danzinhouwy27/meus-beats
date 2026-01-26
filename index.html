@@ -1,174 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meus Beats</title>
+<title>Meus Beats</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0e0e0e;
-      color: #fff;
-      text-align: center;
-      padding: 40px;
-    }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #0f0f0f;
+  color: #fff;
+  text-align: center;
+  padding: 25px;
+}
 
-    h1 {
-      margin-bottom: 10px;
-    }
+h1 { font-size: 26px; }
+h2 { margin-top: 20px; }
 
-    .cta {
-      margin-bottom: 30px;
-      font-size: 14px;
-      opacity: 0.9;
-    }
+.cta {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 20px;
+}
 
-    button {
-      background: #1db954;
-      border: none;
-      padding: 12px 20px;
-      margin: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 6px;
-    }
+button {
+  background: #1e1e1e;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  margin: 6px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
-    button.voltar {
-      background: #e63946;
-      margin-top: 20px;
-    }
+button:hover {
+  background: #333;
+}
 
-    button:hover {
-      opacity: 0.85;
-    }
+.voltar {
+  background: #ff0055;
+  margin-bottom: 20px;
+}
 
-    button.voltar:hover {
-      transform: scale(1.05);
-    }
+.beat {
+  margin: 14px 0;
+}
 
-    .mes {
-      display: none;
-      margin-top: 30px;
-    }
+audio {
+  width: 100%;
+  max-width: 420px;
+}
 
-    audio {
-      width: 100%;
-      max-width: 400px;
-      margin: 10px auto;
-      display: block;
-    }
-  </style>
+@media (max-width: 600px) {
+  button {
+    width: 100%;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <h1>🎧 Meus Beats</h1>
-  <div class="cta">
-    Curtiu algum beat? <br>
-    Chama no Instagram <strong>@SEUINSTAGRAM</strong>
-  </div>
+<h1>Meus Beats</h1>
+<p class="cta">Curtiu algum beat? chama no Instagram</p>
 
-  <div id="menu">
-    <button onclick="mostrar('janeiro')">Janeiro</button>
-    <button onclick="mostrar('fevereiro')">Fevereiro</button>
-  </div>
+<div id="menu"></div>
+<div id="conteudo"></div>
 
-<div id="janeiro" class="mes">
-  <h2>Janeiro</h2>
+<script>
+const meses = [
+  "janeiro","fevereiro","marco","abril","maio","junho",
+  "julho","agosto","setembro","outubro","novembro","dezembro"
+];
 
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat01.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat02.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat03.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat04.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat05.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat06.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat07.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat08.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat09.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat10.mp3" type="audio/mpeg"></audio>
+const menu = document.getElementById("menu");
+const conteudo = document.getElementById("conteudo");
+let tocando = null;
 
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat11.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat12.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat13.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat14.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat15.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat16.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat17.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat18.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat19.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat20.mp3" type="audio/mpeg"></audio>
+/* cria botões dos meses */
+meses.forEach(mes => {
+  const btn = document.createElement("button");
+  btn.textContent = mes.charAt(0).toUpperCase() + mes.slice(1);
+  btn.onclick = () => abrirMes(mes);
+  menu.appendChild(btn);
+});
 
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat21.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat22.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat23.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat24.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat25.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat26.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat27.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat28.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat29.mp3" type="audio/mpeg"></audio>
-  <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture><source src="beats/janeiro/beat30.mp3" type="audio/mpeg"></audio>
-
-  <button class="voltar" onclick="voltar()">⬅ Voltar</button>
-</div>
-
-
-  <!-- FEVEREIRO -->
-  <div id="fevereiro" class="mes">
-    <h2>Fevereiro</h2>
-
-    <audio controls controlsList="nodownload noplaybackrate" disablePictureInPicture>
-      <source src="beats/fevereiro/beat01.mp3" type="audio/mpeg">
-    </audio>
-
+function abrirMes(mes) {
+  menu.style.display = "none";
+  conteudo.innerHTML = `
+    <h2>${mes.toUpperCase()}</h2>
     <button class="voltar" onclick="voltar()">⬅ Voltar</button>
-  </div>
+  `;
 
-  <script>
-    function mostrar(mes) {
-      pararTodos();
-      document.getElementById('menu').style.display = 'none';
-      document.querySelectorAll('.mes').forEach(div => {
-        div.style.display = 'none';
-      });
-      document.getElementById(mes).style.display = 'block';
-    }
+  for (let i = 1; i <= 30; i++) {
+    const num = i.toString().padStart(2, "0");
+    conteudo.innerHTML += `
+      <div class="beat">
+        <p>Beat ${num}</p>
+        <audio controls onplay="pararOutros(this)">
+          <source src="beats/${mes}/beat${num}.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    `;
+  }
+}
 
-    function voltar() {
-      pararTodos();
-      document.querySelectorAll('.mes').forEach(div => {
-        div.style.display = 'none';
-      });
-      document.getElementById('menu').style.display = 'block';
-    }
+function voltar() {
+  conteudo.innerHTML = "";
+  menu.style.display = "block";
+}
 
-    function pararTodos() {
-      document.querySelectorAll('audio').forEach(audio => {
-        audio.pause();
-        audio.currentTime = 0;
-      });
-    }
-
-    // quando um tocar, os outros param
-    document.querySelectorAll('audio').forEach(audio => {
-      audio.addEventListener('play', () => {
-        document.querySelectorAll('audio').forEach(outro => {
-          if (outro !== audio) {
-            outro.pause();
-            outro.currentTime = 0;
-          }
-        });
-      });
-    });
-
-    // bloquear botão direito
-    document.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-    });
-  </script>
+function pararOutros(atual) {
+  if (tocando && tocando !== atual) {
+    tocando.pause();
+  }
+  tocando = atual;
+}
+</script>
 
 </body>
 </html>
-
-
