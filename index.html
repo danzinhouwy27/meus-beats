@@ -39,27 +39,10 @@ button:hover {
   background: #7a1525;
 }
 
-/* BOTÃO VOLTAR */
+/* BOTÃO VOLTAR NORMAL */
 .voltar {
   background: #ff0055;
   margin-bottom: 20px;
-}
-
-/* BOTÃO VOLTAR FIXO */
-.voltar-fixo {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #ff0055;
-  color: #fff;
-  border: none;
-  padding: 14px 18px;
-  font-size: 16px;
-  border-radius: 50px;
-  cursor: pointer;
-  display: none;
-  z-index: 999;
-  box-shadow: 0 0 15px rgba(255,0,85,0.6);
 }
 
 /* BOTÃO INSTAGRAM FIXO */
@@ -103,9 +86,6 @@ audio {
 <div id="menu"></div>
 <div id="conteudo"></div>
 
-<!-- BOTÃO VOLTAR FLUTUANTE -->
-<button id="voltarFixo" class="voltar-fixo" onclick="voltar()">⬅ Voltar</button>
-
 <!-- BOTÃO INSTAGRAM FIXO -->
 <a class="ig-fixo" href="https://instagram.com/Sublime.808" target="_blank">
 📩 Chamar no IG
@@ -119,7 +99,6 @@ const meses = [
 
 const menu = document.getElementById("menu");
 const conteudo = document.getElementById("conteudo");
-const voltarFixo = document.getElementById("voltarFixo");
 let tocando = null;
 
 /* cria botões dos meses */
@@ -137,8 +116,6 @@ function abrirMes(mes) {
     <button class="voltar" onclick="voltar()">⬅ Voltar</button>
   `;
 
-  voltarFixo.style.display = "block";
-
   for (let i = 1; i <= 30; i++) {
     const num = i.toString().padStart(2, "0");
     conteudo.innerHTML += `
@@ -155,7 +132,6 @@ function abrirMes(mes) {
 function voltar() {
   conteudo.innerHTML = "";
   menu.style.display = "block";
-  voltarFixo.style.display = "none";
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -169,4 +145,3 @@ function pararOutros(atual) {
 
 </body>
 </html>
-
