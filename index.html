@@ -39,7 +39,7 @@ button:hover {
   background: #7a1525;
 }
 
-/* BOTÃO VOLTAR */
+/* BOTÃO VOLTAR NORMAL */
 .voltar {
   background: #ff0055;
   margin-bottom: 20px;
@@ -61,7 +61,6 @@ button:hover {
   box-shadow: 0 0 15px rgba(221,42,123,0.7);
 }
 
-/* PLAYER */
 .beat {
   margin: 14px 0;
 }
@@ -79,7 +78,7 @@ audio {
 </style>
 </head>
 
-<body oncontextmenu="return false"> <!-- desativa botão direito -->
+<body>
 
 <h1>Meus Beats</h1>
 <p class="cta">Curtiu algum beat? chama no Instagram</p>
@@ -88,7 +87,7 @@ audio {
 <div id="conteudo"></div>
 
 <!-- BOTÃO INSTAGRAM FIXO -->
-<a class="ig-fixo" href="https://instagram.com/Sublime.808" target="_blank">
+<a class="ig-fixo" href="https://instagram.com/SEU_INSTAGRAM" target="_blank">
 📩 Chamar no IG
 </a>
 
@@ -137,7 +136,9 @@ function voltar() {
 }
 
 function pararOutros(atual) {
-  if (tocando && tocando !== atual) tocando.pause();
+  if (tocando && tocando !== atual) {
+    tocando.pause();
+  }
   tocando = atual;
 }
 </script>
