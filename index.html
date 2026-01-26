@@ -61,28 +61,28 @@ button:hover {
   box-shadow: 0 0 15px rgba(221,42,123,0.7);
 }
 
-/* PLAYER CUSTOM */
+/* PLAYER CUSTOM VISÍVEL */
 .beat {
   margin: 14px 0;
 }
 
-.play-btn {
-  background: #ff0055;
-  border: none;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 5px;
-}
-
-.play-btn:hover {
-  background: #ff3388;
-}
-
 audio {
-  display: none; /* esconde player nativo */
+  width: 100%;
+  max-width: 420px;
+  outline: none;
+}
+
+/* REMOVE CONTROLES QUE DÃO DOWNLOAD/VELOCIDADE */
+audio::-webkit-media-controls-enclosure,
+audio::-webkit-media-controls-panel,
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-timeline,
+audio::-webkit-media-controls-volume-slider {
+  display: none !important;
+}
+
+audio.custom-player {
+  display: block;
 }
 
 @media (max-width: 600px) {
@@ -136,10 +136,9 @@ function abrirMes(mes) {
     conteudo.innerHTML += `
       <div class="beat">
         <p>Beat ${num}</p>
-        <audio id="${mes}-beat${num}">
+        <audio id="${mes}-beat${num}" class="custom-player" controls>
           <source src="beats/${mes}/beat${num}.mp3" type="audio/mpeg">
         </audio>
-        <button class="play-btn" onclick="tocar('${mes}-beat${num}')">▶ Ouvir</button>
       </div>
     `;
   }
@@ -151,16 +150,11 @@ function voltar() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function tocar(id) {
-  const audio = document.getElementById(id);
-  if (tocando && tocando !== audio) tocando.pause();
-  if (audio.paused) {
-    audio.play();
-    tocando = audio;
-  } else {
-    audio.pause();
-  }
-}
+/* pausa outros beats */
+document.addEventListener("play", function(e){
+  if(tocando && tocando !== e.target) tocando.pause();
+  tocando = e.target;
+}, true);
 </script>
 
 </body>
