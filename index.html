@@ -89,10 +89,10 @@ audio {
 </style>
 </head>
 
-<body oncontextmenu="return false"> <!-- desativa botão direito -->
+<body oncontextmenu="return false"> <!-- bloqueia botão direito -->
 
 <h1>Meus Beats</h1>
-<p class="cta">Curtiu algum beat? chama no Instagram Sublime.808</p>
+<p class="cta">Curtiu algum beat? chama no Instagram</p>
 
 <div id="menu"></div>
 <div id="conteudo"></div>
@@ -149,12 +149,10 @@ function voltar() {
 
 /* destacar beat tocando e parar outros */
 function destacar(audio) {
-  // para o beat tocando antes
   if (tocando && tocando !== audio) {
     tocando.pause();
     tocando.parentElement.classList.remove("tocando");
   }
-
   tocando = audio;
   audio.parentElement.classList.add("tocando");
 }
