@@ -118,24 +118,47 @@
     <button class="voltar" onclick="voltar()">⬅ Voltar</button>
   </div>
 
-  <script>
-    function mostrar(mes) {
-      document.getElementById('menu').style.display = 'none';
-      document.querySelectorAll('.mes').forEach(div => {
-        div.style.display = 'none';
-      });
-      document.getElementById(mes).style.display = 'block';
-    }
+<script>
+  function mostrar(mes) {
+    pararTodos();
+    document.getElementById('menu').style.display = 'none';
+    document.querySelectorAll('.mes').forEach(div => {
+      div.style.display = 'none';
+    });
+    document.getElementById(mes).style.display = 'block';
+  }
 
-    function voltar() {
-      document.querySelectorAll('.mes').forEach(div => {
-        div.style.display = 'none';
+  function voltar() {
+    pararTodos();
+    document.querySelectorAll('.mes').forEach(div => {
+      div.style.display = 'none';
+    });
+    document.getElementById('menu').style.display = 'block';
+  }
+
+  function pararTodos() {
+    document.querySelectorAll('audio').forEach(audio => {
+      audio.pause();
+      audio.currentTime = 0;
+    });
+  }
+
+  // quando um tocar, os outros param
+  document.querySelectorAll('audio').forEach(audio => {
+    audio.addEventListener('play', () => {
+      document.querySelectorAll('audio').forEach(outro => {
+        if (outro !== audio) {
+          outro.pause();
+          outro.currentTime = 0;
+        }
       });
-      document.getElementById('menu').style.display = 'block';
-    }
-  </script>
+    });
+  });
+</script>
+
 
 </body>
 </html>
+
 
 
