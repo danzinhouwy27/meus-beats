@@ -78,3 +78,36 @@ h2 {
   display: none;
   margin-top: 15px;
 }
+
+/* MOBILE */
+@media (max-width: 600px) {
+
+  body {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .cta {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  button {
+    width: 100%;
+    max-width: 100%;
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  audio {
+    max-width: 100%;
+  }
+
+}
