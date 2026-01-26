@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Beats</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>BEATS</h1>
+  <p class="sub">Preview only • DM para licença</p>
+
+  <!-- JANEIRO -->
+  <div class="month">
+    <button class="month-btn" onclick="toggle('jan')">Janeiro</button>
+
+    <div class="beats" id="jan">
+      <div class="beat">
+        <p>Trap Hard</p>
+        <audio controls>
+          <source src="beats/janeiro/beat1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="beat">
+        <p>Dark Trap</p>
+        <audio controls>
+          <source src="beats/janeiro/beat2.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEVEREIRO -->
+  <div class="month">
+    <button class="month-btn" onclick="toggle('fev')">Fevereiro</button>
+
+    <div class="beats" id="fev">
+      <div class="beat">
+        <p>Drill</p>
+        <audio controls>
+          <source src="beats/fevereiro/beat1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <a href="https://instagram.com/SEUINSTAGRAM" target="_blank">
+      @SEUINSTAGRAM
+    </a>
+  </footer>
+
+  <script>
+    function toggle(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === "block" ? "none" : "block";
+    }
+  </script>
+
+</body>
+</html>
