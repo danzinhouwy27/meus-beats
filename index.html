@@ -39,7 +39,7 @@ button:hover {
   background: #7a1525;
 }
 
-/* BOTÃO VOLTAR NORMAL */
+/* BOTÃO VOLTAR */
 .voltar {
   background: #ff0055;
   margin-bottom: 20px;
@@ -61,8 +61,19 @@ button:hover {
   box-shadow: 0 0 15px rgba(221,42,123,0.7);
 }
 
+/* PLAYER */
 .beat {
   margin: 14px 0;
+  padding: 6px;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+/* GLOW NO BEAT TOCANDO */
+.beat.tocando {
+  border: 2px solid #ff0055;
+  box-shadow: 0 0 15px #ff0055;
+  background: rgba(255,0,85,0.1);
 }
 
 audio {
@@ -78,10 +89,10 @@ audio {
 </style>
 </head>
 
-<body>
+<body oncontextmenu="return false"> <!-- desativa botão direito -->
 
 <h1>Meus Beats</h1>
-<p class="cta">Curtiu algum beat? chama no Instagram</p>
+<p class="cta">Curtiu algum beat? chama no Instagram Sublime.808</p>
 
 <div id="menu"></div>
 <div id="conteudo"></div>
@@ -118,10 +129,11 @@ function abrirMes(mes) {
 
   for (let i = 1; i <= 30; i++) {
     const num = i.toString().padStart(2, "0");
+    const codigo = mes.substring(0,3).toUpperCase() + "-" + num; // EX: JAN-07
     conteudo.innerHTML += `
-      <div class="beat">
-        <p>Beat ${num}</p>
-        <audio controls onplay="pararOutros(this)">
+      <div class="beat" id="beat-${mes}-${num}">
+        <p>${codigo}</p>
+        <audio controls onplay="destacar(this)">
           <source src="beats/${mes}/beat${num}.mp3" type="audio/mpeg">
         </audio>
       </div>
@@ -135,12 +147,28 @@ function voltar() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function pararOutros(atual) {
-  if (tocando && tocando !== atual) {
+/* destacar beat tocando e parar outros */
+function destacar(audio) {
+  // para o beat tocando antes
+  if (tocando && tocando !== audio) {
     tocando.pause();
+    tocando.parentElement.classList.remove("tocando");
   }
-  tocando = atual;
+
+  tocando = audio;
+  audio.parentElement.classList.add("tocando");
 }
+
+// pausa quando outro beat tocar
+document.addEventListener("play", function(e){
+  if(tocando && tocando !== e.target) {
+    tocando.pause();
+    tocando.parentElement.classList.remove("tocando");
+  }
+  tocando = e.target;
+  tocando.parentElement.classList.add("tocando");
+}, true);
+
 </script>
 
 </body>
